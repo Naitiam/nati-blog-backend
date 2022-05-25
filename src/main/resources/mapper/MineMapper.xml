@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mine.mapper.MineMapper">
+    <select id="findMineInfo" resultType="MineInfo">
+      select * from mine_info where admname=#{admname}
+    </select>
+    <update id="updateMineInfo">
+        update mine_info
+        <set>
+            <if test="admname!=null">
+                admname=#{admname},
+            </if>
+            <if test="admpwd!=null">
+                admpwd=#{admpwd},
+            </if>
+            <if test="admphoto!=null">
+                admphoto=#{admphoto},
+            </if>
+            <if test="admintroduction!=null">
+                admintroduction=#{admintroduction},
+            </if>
+            <if test="admemail!=null">
+                admemail=#{admemail},
+            </if>
+            <if test="blogphoto!=null">
+                blogphoto=#{blogphoto}
+            </if>
+        </set>
+        where admnum=#{admnum}
+    </update>
+</mapper>

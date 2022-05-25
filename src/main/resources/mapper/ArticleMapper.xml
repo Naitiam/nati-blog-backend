@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mine.mapper.ArticleMapper">
+    <select id="queryAllArticle" resultType="Article">
+        select * from article_list;
+    </select>
+    <select id="findByArtnum" resultType="Article">
+        select * from article_list where artnum = #{artnum};
+    </select>
+    <insert id="addArticle" parameterType="Article">
+        insert into
+        article_list(arttitle,artauthor,artreltime,artmodtime,artcontent,arttags,artphoto,artgood,artwatch)
+        values (#{arttitle},#{artauthor},#{artreltime},null,#{artcontent},#{arttags},#{artphoto},#{artgood},#{artwatch})
+    </insert>
+    <update id="updateArticle" parameterType="Article">
+        update article_list set
+        <if test="arttitle!=null">
+            arttitle=#{arttitle},
+        </if>
+        <if test="artauthor!=null">
+        artauthor=#{artauthor},
+        </if>
+        artmodtime=#{artmodtime},
+        <if test="artcontent!=null">
+        artcontent=#{artcontent},
+        </if>
+        arttags=#{arttags},artphoto=#{artphoto}
+        where artnum=#{artnum}
+    </update>
+    <delete id="deleteArticleByNum">
+        delete from article_list where artnum=#{artnum};
+    </delete>
+
+    <select id="articleall" resultType="Integer">
+        select count(artnum) from article_list;
+    </select>
+    <select id="artgoodall" resultType="Integer">
+        select sum(artgood) from article_list;
+    </select>
+    <select id="artwatchall" resultType="Integer">
+        select sum(artwatch) from article_list;
+    </select>
+
+    <!--<select id="selectPage" parameterType="Integer" resultType="Article">-->
+        <!--select * from article_list limit #{pageNum},#{pageSize}-->
+    <!--</select>-->
+    <!--<select id="selectTotal" resultType="Integer">-->
+        <!--select count(*) from article_list-->
+    <!--</select>-->
+</mapper>
