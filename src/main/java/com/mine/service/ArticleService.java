@@ -14,5 +14,6 @@ public interface ArticleService extends IService<Article> {
     int articleall();
     int artgoodall();
     int artwatchall();
+    int updateWatchAndGood(Article article);
 
 }

@@ -13,7 +13,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     private String fileUploadPath;
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/img/**").addResourceLocations("file:F:/biye/blogimgs/");
+        registry.addResourceHandler("/img/**").addResourceLocations("file:F:/mineblogsys/blogimgs/");
     }
 //    @Override
 //    public void addInterceptors(InterceptorRegistry registry) {

@@ -76,4 +76,9 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper,Article> imple
         return articleMapper.artwatchall();
     }
 
+    @Override
+    public int updateWatchAndGood(Article article) {
+        return articleMapper.updateWatchAndGood(article);
+    }
+
 }

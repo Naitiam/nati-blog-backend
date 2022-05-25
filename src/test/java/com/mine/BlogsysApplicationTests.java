@@ -153,4 +153,12 @@ class BlogsysApplicationTests {
         commentMapper.addreply(com);
         commentMapper.deleteComByComnum(8);
     }
+    @Test
+    public void aaaaa(){
+        Article article = new Article();
+        article.setArtnum(2);
+        article.setArtwatch(2);
+        article.setArtgood(5);
+        articleMapper.updateWatchAndGood(article);
+    }
 }

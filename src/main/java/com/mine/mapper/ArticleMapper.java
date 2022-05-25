@@ -29,6 +29,8 @@ public interface ArticleMapper extends BaseMapper<Article> {
     int updateArticle(Article article);
     //删除文章
     int deleteArticleByNum(Integer artnum);
+    //更新文章浏览数和点赞数
+    int updateWatchAndGood(Article article);
 
     //分页查询
     //这里不使用@Param注解会报错Parameter 'pageNum' not found. Available parameters are [arg1, arg0, param1, param2]

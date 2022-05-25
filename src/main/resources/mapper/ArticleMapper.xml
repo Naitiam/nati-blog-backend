@@ -42,6 +42,9 @@
     <select id="artwatchall" resultType="Integer">
         select sum(artwatch) from article_list;
     </select>
+    <update id="updateWatchAndGood" parameterType="Article">
+        update article_list set artgood=#{artgood},artwatch=#{artwatch} where artnum=#{artnum}
+    </update>
 
     <!--<select id="selectPage" parameterType="Integer" resultType="Article">-->
         <!--select * from article_list limit #{pageNum},#{pageSize}-->

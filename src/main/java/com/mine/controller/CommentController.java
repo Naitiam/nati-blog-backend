@@ -69,7 +69,7 @@ public class CommentController {
     //----------------------------------回复----------------------------------
     @PostMapping("/reply")
     public Result<Void> addreply(@RequestBody Comment comment){
-        commentService.addComment(comment);
+        commentService.addreply(comment);
         return new Result<>(2000,"回复成功",null);
     }
 

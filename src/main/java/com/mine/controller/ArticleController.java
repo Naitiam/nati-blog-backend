@@ -38,6 +38,7 @@ public class ArticleController {
         return  new Result<Map<String,Integer>>(2000,"管理界面首页需要的数据",data);
     }
 
+    //-----------------------------某文章界面-----------------------------
     @GetMapping("/{artnum}")
     public Result<Article> fingByArtnum(@PathVariable Integer artnum){
         Article article = articleService.findByArtnum(artnum);
@@ -51,8 +52,17 @@ public class ArticleController {
                 }
                 article.setTagsList(tagsList);
             }
+        article.setArtwatch(article.getArtwatch()+1);
         return new Result<Article>(2000,"博客文章页面",article);
     }
+    //-----------------------------监听转跳点赞数和浏览数-----------------------------
+    @PostMapping("/watchgood")
+    public Result<Void> updateWatchAndGood(@RequestBody Article article){
+//        System.out.println(article+"--------------------");
+        articleService.updateWatchAndGood(article);
+        return new Result<>(2000,"更新成功",null);
+    }
+
 
     //-----------------------------返回添加界面tag们-----------------------------
     @RequestMapping("/alltags")
